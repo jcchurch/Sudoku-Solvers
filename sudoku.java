@@ -2,18 +2,6 @@ import java.util.*;
 
 class sudoku {
 
-    public static final int[] sector = {
-                                0,0,0,1,1,1,2,2,2,
-                                0,0,0,1,1,1,2,2,2,
-                                0,0,0,1,1,1,2,2,2,
-                                3,3,3,4,4,4,5,5,5,
-                                3,3,3,4,4,4,5,5,5,
-                                3,3,3,4,4,4,5,5,5,
-                                6,6,6,7,7,7,8,8,8,
-                                6,6,6,7,7,7,8,8,8,
-                                6,6,6,7,7,7,8,8,8
-                              };
-
     public static final int   side = 9;
     int[] grid;
 
@@ -21,20 +9,9 @@ class sudoku {
 
         int[] possible = {0,1,2,3,4,5,6,7,8,9};
 
-        int grid_corner = 0;
         int row         = pos / side;
         int col         = pos % side;
-
-        switch (sector[pos]) {
-            case 1: grid_corner = 3; break;
-            case 2: grid_corner = 6; break;
-            case 3: grid_corner = 27; break;
-            case 4: grid_corner = 30; break;
-            case 5: grid_corner = 33; break;
-            case 6: grid_corner = 54; break;
-            case 7: grid_corner = 57; break;
-            case 8: grid_corner = 60; break;
-        }
+        int grid_corner = (row / 3) * 27 + (col / 3) * 3;
 
         // Check 3x3 grid
         possible[ grid[grid_corner   ] ] = 0;
