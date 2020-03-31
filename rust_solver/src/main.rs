@@ -59,7 +59,7 @@ fn solve(grid: &mut [usize; SIZE], original: &[usize; SIZE]) -> usize {
     let mut current_score: usize = score(grid);
     let mut getting_nowhere: usize = 0;
  
-    while current_score > 0 && getting_nowhere < 100 {
+    while current_score > 0 && getting_nowhere < 1000 {
         let swap_sector = rand::thread_rng().gen_range(0, WIDTH);
         let mut unblocked = get_sector_open_locations(swap_sector, original);
         shuffle_list(&mut unblocked);    
@@ -89,7 +89,6 @@ fn solve(grid: &mut [usize; SIZE], original: &[usize; SIZE]) -> usize {
                 }
  
                 current_score = next_score;
-                //println!("{} {}", current_score, getting_nowhere);
             }
         }
     }
